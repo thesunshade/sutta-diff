@@ -20,8 +20,10 @@
 
 html,
 body {
-    background: #EEE;
+    /* background: white; */
+    background: var(--off-black);
     font: 1rem sans-serif;
+    color: var(--off-white)
 }
 
 body {
@@ -42,10 +44,10 @@ body {
     display: flex;
     flex-direction: row;
     column-gap: .7rem;
-    padding: 1rem
+    padding: 1rem;
 }
 
-@media only screen and (max-width: 475px) {
+@media only screen and (max-width: 575px) {
     #comparison-area {
 
         flex-direction: column;
@@ -90,21 +92,46 @@ ins {
     text-decoration: none;
 }
 
-#comparison {
+.sc-link {
+    text-align: center;
+}
+
+.comparison {
+    background-color: var(--light-off-white);
+    color: var(--off-black)
+}
+
+#comparidon-content {
     white-space: pre-wrap;
 }
 
-#settings {
-    position: absolute;
-    top: 0;
-    left: 5px;
-    right: 5px;
+.content-area {
+    margin-top: 1rem
+}
+
+li {
+    list-style: none;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     height: 2em;
     line-height: 2em;
+    column-gap: 2rem;
+}
+
+#settings {
+    height: 2em;
+    line-height: 2em;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #settings label {
-    margin-left: 1em;
+    margin-left: .4em;
 }
 
 
@@ -164,7 +191,21 @@ ins {
     padding: .1rem
 }
 
-.dark .go-button {
+.icon-trash {
+    position: relative;
+    top: .3rem;
+    padding-left: .3rem;
+}
+
+.compare-button {
+    border-radius: 0;
+    border: 1px solid var(--dark-gray);
+    /* border-left: 1px !important; */
+    padding: .1rem
+}
+
+.dark .go-button,
+.dark .compare-button {
     border-color: var(--off-white);
     background-color: var(--dark-blue);
     color: var(--off-white);
@@ -172,4 +213,40 @@ ins {
 
 .dark .go-button:hover {
     background-color: var(--light-gray);
+}
+
+/* --------- OTHER TOOLS ICONS --------*/
+.links-area {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.icon {
+    filter: brightness(1);
+    filter: invert(100%);
+}
+
+.links-area a {
+    position: relative;
+    top: 0;
+    transition: all ease 0.5s;
+    filter: brightness(100%);
+}
+
+.links-area a:hover {
+    top: -3px;
+    filter: brightness(130%);
+}
+
+a.labs {
+    rotate: 0deg;
+    transition: rotate ease 1s;
+}
+
+a.labs:hover {
+    rotate: 55deg;
+    top: 0px !important;
 }

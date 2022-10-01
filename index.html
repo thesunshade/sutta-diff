@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" sizes="64x64" href="./favicon.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="./images/favicon.png">
     <title>Sutta Diff</title>
     <link rel="stylesheet" href="style.css" />
 
@@ -19,39 +19,85 @@
     <meta property="og:url" content="https://diff.readingfaithfully.org/" />
     <meta property="og:site_name" content="diff.ReadingFaithfully.org" />
     <meta property="og:image" itemprop="image"
-        content="https://diff.readingfaithfully.org/featuredImage-sutta-diff.png" />
+        content="https://diff.readingfaithfully.org/images/featuredImage-sutta-diff.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="diff.ReadingFaithfully.org" />
     <meta name="twitter:creator" content="ReadingFaithfully.org" />
 </head>
 
 <body>
-
-    <div id="settings">
-        <h1>Diff</h1>
-        <label><input type="radio" name="diff_type" value="diffChars" checked> Chars</label>
-        <label><input type="radio" name="diff_type" value="diffWords"> Words</label>
-        <label><input type="radio" name="diff_type" value="diffLines"> Lines</label>
+    <div class="options">
+        <div id="settings">
+            <h1>By</h1>
+            <label><input type="radio" name="diff_type" value="diffWords" checked> Word</label>
+            <label><input type="radio" name="diff_type" value="diffLines"> Line</label>
+        </div>
+        <select name="language" id="language">
+            <option value="en">English</option>
+            <option value="pl">Pāli</option>
+            <!-- <option value="de">German</option>
+            <option value="fr">French</option> -->
+        </select>
     </div>
-
-
 
     <div id="comparison-area">
         <div id="sutta-one" class="sutta-area sutta-one">
             <form id="sutta-one-form"><input class="input-area" id="sutta-one-citation" type="text"
-                    placeholder="Enter citation"><input class="go-button" type="submit" value="Go"></form>
-            <div id="sutta-one-content"></div>
+                    placeholder="Enter citation"><input class="go-button" type="submit" value="Go"><img id="trash-one"
+                    height="19px" class="icon-trash" src="./images/icon-trash.png"></form>
+            <div id="sutta-one-content" class="content-area"></div>
         </div>
         <div id="sutta-two" class="sutta-area sutta-two">
             <form id="sutta-two-form"><input class="input-area" id="sutta-two-citation" type="text"
-                    placeholder="Enter citation"><input class="go-button" type="submit" value="Go"></form>
-            <div id="sutta-two-content"></div>
+                    placeholder="Enter citation"><input class="go-button" type="submit" value="Go"><img id="trash-two"
+                    height="19px" class="icon-trash" src="./images/icon-trash.png"></form>
+            <div id="sutta-two-content" class="content-area"></div>
         </div>
         <div id="comparison" class="sutta-area comparison">
-            <div id="comparidon-content"></div>
+            <button id="compare-button" class="compare-button">Compare</button>
+            <div id="comparidon-content" class="content-area"></div>
         </div>
     </div>
-    <a href="https://github.com/kpdecker/jsdiff" class="source">github.com/kpdecker/jsdiff</a>
+    <div class="links-area" style="text-align: center;">
+        <!--RF MAIN-->
+        <a href="http://readingfaithfully.org" title="Support for your sutta readng practice" rel="noreferrer"
+            target="_blank"><img class="icon" width="20px" alt="ReadingFaithfully.org icon"
+                src="./images/favicon-rf-black.png"></a>
+        <!--DAILY-->
+        <a href="http://daily.readingfaithfully.org" title="Daily Suttas" rel="noreferrer" target="_blank"><img
+                class="icon" width="20px" alt="Daily ReadingFaithfully.org icon"
+                src="./images/favicon-drf-black.png"></a>
+        <!--CITATION HELPER-->
+        <a href="https://sutta.readingfaithfully.org" title="Citation Lookup Tool" rel="noreferrer" target="_blank"><img
+                class="icon" width="20px" src="./images/favicon-citaton-helper-black.png"
+                alt="Citation Lookup tool icon"></a>
+        <!--NAME SEARCH-->
+        <a href="https://name.readingfaithfully.org" title="Search for suttas by name" rel="noreferrer"
+            target="_blank"><img class="icon" width="20px" src="./images/favicon-name-black.png"
+                alt="Sutta Name Search icon"></a>
+        <!--PED-->
+        <a href="https://ped.readingfaithfully.org" title="A lightweight interface for the PED" rel="noreferrer"
+            target="_blank"><img class="icon" width="20px" src="./images/favicon-ped-black.png"
+                alt="SuttaCentral.org Lightweight interface icon"></a>
+        <!--DPPN-->
+        <a href="https://dppn.readingfaithfully.org" title="A lightweight interface the Dictionary of Pali Proper Names"
+            rel="noreferrer" target="_blank"><img class="icon" width="20px" src="./images/favicon-dppn-black.png"
+                alt="DPPN search icon"></a>
+        <!--SC LIGHT-->
+        <a href="https://sc.readingfaithfully.org" title="An ultra lightweight interface for SuttaCentral.net"
+            rel="noreferrer" target="_blank"><img class="icon" width="20px" src="./images/favicon-sc-light-black.png"
+                alt="SC Light icon"></a>
+        <!--Labs-->
+        <a href="https://readingfaithfully.org/lab/" title="Other tools under development" rel="noreferrer"
+            target="_blank" class="labs">
+            <img class="icon" width="19px" src="./images/favicon-labs-black.png" style="position: relative ; top: 1px"
+                alt="Labs icon" />
+        </a>
+        <!--GITHUB-->
+        <a href="https://github.com/thesunshade/sutta-diff#readme" title="The source code for this site"
+            rel="noreferrer" target="_blank"><img class="icon" width="20px" src="./images/GitHub-Mark-64px-black.png"
+                alt="GitHub icon"></a>
+    </div>
     <script src="diff.js"></script>
     <script type="module" src="index.js"></script>
 </body>

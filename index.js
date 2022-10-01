@@ -9,23 +9,37 @@ const form2 = document.getElementById("sutta-two-form");
 const suttaTwoCitation = document.getElementById("sutta-two-citation");
 const suttaTwoContent = document.getElementById("sutta-two-content");
 
+document.getElementById("trash-one").addEventListener("click", () => (suttaOneContent.innerHTML = ""));
+document.getElementById("trash-two").addEventListener("click", () => (suttaTwoContent.innerHTML = ""));
+
+const compareButton = document.getElementById("compare-button");
+const languageSelector = document.getElementById("language");
+let language = "en";
+languageSelector.addEventListener("change", e => {
+  language = e.target.value;
+});
+
 form1.addEventListener("submit", e => {
   e.preventDefault();
   if (suttaOneCitation.value) {
-    buildSutta(suttaOneCitation.value, suttaOneContent);
+    buildSutta(suttaOneCitation.value, suttaOneContent, language);
   }
 });
 form2.addEventListener("submit", e => {
   e.preventDefault();
   if (suttaTwoCitation.value) {
-    buildSutta(suttaTwoCitation.value, suttaTwoContent);
+    buildSutta(suttaTwoCitation.value, suttaTwoContent, language);
   }
 });
 
 /* -------ORIGINAL------------*/
-var a = suttaOneContent;
-var b = suttaTwoContent;
-var result = document.getElementById("comparison");
+const a = suttaOneContent;
+const b = suttaTwoContent;
+const result = document.getElementById("comparidon-content");
+
+compareButton.addEventListener("click", () => {
+  changed();
+});
 
 function changed() {
   var diff = JsDiff[window.diffType](a.textContent, b.textContent);
