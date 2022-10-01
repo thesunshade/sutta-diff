@@ -11,15 +11,37 @@ const suttaTwoContent = document.getElementById("sutta-two-content");
 
 let params = new URLSearchParams(document.location.search);
 
+const colorSchemeSelector = document.getElementById("color-scheme");
+let colorScheme = "red-green";
+colorSchemeSelector.addEventListener("input", e => {
+  colorScheme = e.target.value;
+  switch (e.target.value) {
+    case "red-green":
+      document.body.classList.remove("red-blue", "monochrome");
+      document.body.classList.add("red-green");
+      break;
+    case "red-blue":
+      document.body.classList.remove("red-green", "monochrome");
+      document.body.classList.add("red-blue");
+      break;
+    case "monochrome":
+      document.body.classList.remove("red-blue", "red-green");
+      document.body.classList.add("monochrome");
+      break;
+  }
+});
+
 document.getElementById("trash-one").addEventListener("click", () => {
   suttaOneContent.innerHTML = "";
   params.delete("one");
-  document.location.search = params;
+  //   document.location.search = params;
+  window.history.replaceState(null, null, "?" + params);
 });
 document.getElementById("trash-two").addEventListener("click", () => {
   suttaTwoContent.innerHTML = "";
   params.delete("two");
-  document.location.search = params;
+  //   document.location.search = params;
+  window.history.replaceState(null, null, "?" + params);
 });
 
 const compareButton = document.getElementById("compare-button");
@@ -28,7 +50,8 @@ let language = "en";
 languageSelector.addEventListener("input", e => {
   language = e.target.value;
   params.set("lang", language);
-  document.location.search = params;
+  //   document.location.search = params;
+  window.history.replaceState(null, null, "?" + params);
 });
 
 let suttaOne = params.get("one");
@@ -61,7 +84,8 @@ form1.addEventListener("submit", e => {
   e.preventDefault();
   if (suttaOneCitation.value) {
     params.set("one", suttaOneCitation.value);
-    document.location.search = params;
+    // document.location.search = params;
+    window.history.replaceState(null, null, "?" + params);
     buildSutta(suttaOneCitation.value, suttaOneContent, language);
   }
 });
@@ -69,7 +93,8 @@ form2.addEventListener("submit", e => {
   e.preventDefault();
   if (suttaTwoCitation.value) {
     params.set("two", suttaTwoCitation.value);
-    document.location.search = params;
+    window.history.replaceState(null, null, "?" + params);
+    // document.location.search = params;
     buildSutta(suttaTwoCitation.value, suttaTwoContent, language);
   }
 });
