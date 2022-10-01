@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" sizes="64x64" href="./favicon.png">
+    <title>Sutta Diff</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div id="settings">
+        <h1>Diff</h1>
+        <label><input type="radio" name="diff_type" value="diffChars" checked> Chars</label>
+        <label><input type="radio" name="diff_type" value="diffWords"> Words</label>
+        <label><input type="radio" name="diff_type" value="diffLines"> Lines</label>
+    </div>
+
+
+
+    <div id="comparison-area">
+        <div id="sutta-one" class="sutta-area sutta-one">
+            <form id="sutta-one-form"><input class="input-area" id="sutta-one-citation" type="text"
+                    placeholder="Enter citation"><input class="go-button" type="submit" value="Go"></form>
+            <div id="sutta-one-content"></div>
+        </div>
+        <div id="sutta-two" class="sutta-area sutta-two">
+            <form id="sutta-two-form"><input class="input-area" id="sutta-two-citation" type="text"
+                    placeholder="Enter citation"><input class="go-button" type="submit" value="Go"></form>
+            <div id="sutta-two-content"></div>
+        </div>
+        <div id="comparison" class="sutta-area comparison">
+            <div id="comparidon-content"></div>
+        </div>
+    </div>
+    <a href="https://github.com/kpdecker/jsdiff" class="source">github.com/kpdecker/jsdiff</a>
+    <script src="diff.js"></script>
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>
