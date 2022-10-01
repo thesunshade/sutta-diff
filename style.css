@@ -61,6 +61,7 @@ body {
     min-width: 26vw;
     padding: 1rem;
     border: solid 1px black;
+    border-radius: 10px;
 }
 
 .sutta-one {
@@ -213,6 +214,10 @@ li {
 
 .dark .go-button:hover {
     background-color: var(--light-gray);
+}
+
+.byline {
+    text-align: center;
 }
 
 /* --------- OTHER TOOLS ICONS --------*/

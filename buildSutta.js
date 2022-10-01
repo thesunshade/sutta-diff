@@ -38,7 +38,6 @@ export function buildSutta(slug, suttaArea, language) {
     .then(responses => {
       let html = "";
       const [contentResponse, suttaplex] = responses;
-
       const { html_text, translation_text, root_text, keys_order } = contentResponse;
 
       keys_order.forEach(segment => {

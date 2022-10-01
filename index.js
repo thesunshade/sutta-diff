@@ -9,25 +9,67 @@ const form2 = document.getElementById("sutta-two-form");
 const suttaTwoCitation = document.getElementById("sutta-two-citation");
 const suttaTwoContent = document.getElementById("sutta-two-content");
 
-document.getElementById("trash-one").addEventListener("click", () => (suttaOneContent.innerHTML = ""));
-document.getElementById("trash-two").addEventListener("click", () => (suttaTwoContent.innerHTML = ""));
+let params = new URLSearchParams(document.location.search);
+
+document.getElementById("trash-one").addEventListener("click", () => {
+  suttaOneContent.innerHTML = "";
+  params.delete("one");
+  document.location.search = params;
+});
+document.getElementById("trash-two").addEventListener("click", () => {
+  suttaTwoContent.innerHTML = "";
+  params.delete("two");
+  document.location.search = params;
+});
 
 const compareButton = document.getElementById("compare-button");
 const languageSelector = document.getElementById("language");
 let language = "en";
-languageSelector.addEventListener("change", e => {
+languageSelector.addEventListener("input", e => {
   language = e.target.value;
+  params.set("lang", language);
+  document.location.search = params;
 });
+
+let suttaOne = params.get("one");
+let suttaTwo = params.get("two");
+let lang = params.get("lang");
+console.log(suttaOne, suttaTwo, lang);
+
+if (lang === "en" || lang === "pl") {
+  language = lang;
+  languageSelector.value = lang;
+}
+
+if (suttaOne) {
+  suttaOneCitation.value = suttaOne;
+  buildSutta(suttaOneCitation.value, suttaOneContent, language);
+}
+
+if (suttaTwo) {
+  suttaTwoCitation.value = suttaTwo;
+  buildSutta(suttaTwoCitation.value, suttaTwoContent, language);
+}
+
+if (suttaOne && suttaTwo) {
+  setTimeout(() => {
+    changed();
+  }, 1000);
+}
 
 form1.addEventListener("submit", e => {
   e.preventDefault();
   if (suttaOneCitation.value) {
+    params.set("one", suttaOneCitation.value);
+    document.location.search = params;
     buildSutta(suttaOneCitation.value, suttaOneContent, language);
   }
 });
 form2.addEventListener("submit", e => {
   e.preventDefault();
   if (suttaTwoCitation.value) {
+    params.set("two", suttaTwoCitation.value);
+    document.location.search = params;
     buildSutta(suttaTwoCitation.value, suttaTwoContent, language);
   }
 });
