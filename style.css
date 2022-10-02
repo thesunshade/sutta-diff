@@ -30,7 +30,7 @@ body {
 }
 
 body {
-    padding-top: 1.8em;
+    padding-top: 1em;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -41,6 +41,12 @@ body {
     height: 100%
 }
 
+.instructions-heading {
+    text-align: center;
+    font-style: italic;
+    font-size: .9rem;
+    padding-bottom: .5rem;
+}
 
 
 #comparison-area {
@@ -51,14 +57,6 @@ body {
 
 }
 
-@media only screen and (max-width: 575px) {
-    #comparison-area {
-
-        flex-direction: column;
-        row-gap: .7rem
-    }
-
-}
 
 .sutta-area {
     flex-grow: 1;
@@ -172,6 +170,7 @@ li {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     height: 2em;
     line-height: 2em;
     column-gap: 2rem;
@@ -309,4 +308,45 @@ a.labs {
 a.labs:hover {
     rotate: 55deg;
     top: 0px !important;
+}
+
+
+@media only screen and (max-width: 575px) {
+    .options {
+        column-gap: .8rem;
+    }
+
+    #comparison-area {
+
+        flex-direction: column;
+        row-gap: .7rem
+    }
+
+    .sutta-one,
+    .sutta-two {
+        height: 20vh;
+        overflow: auto;
+        font-size: .8rem;
+    }
+
+    .sutta-area {
+        padding: .5rem !important
+    }
+
+    ul {
+        display: none;
+    }
+
+    header br {
+        display: none;
+    }
+
+    br {
+        height: .5rem;
+    }
+
+    h1 {
+        font-size: .8rem !important;
+    }
+
 }

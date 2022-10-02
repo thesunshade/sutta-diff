@@ -12,10 +12,24 @@ const suttaTwoContent = document.getElementById("sutta-two-content");
 let params = new URLSearchParams(document.location.search);
 
 const colorSchemeSelector = document.getElementById("color-scheme");
+console.log(colorSchemeSelector.value);
 let colorScheme = "red-green";
-colorSchemeSelector.addEventListener("input", e => {
+if (localStorage.colorScheme) {
+  console.log("there is local storage");
+  colorScheme = localStorage.colorScheme;
+}
+colorSchemeSelector.value = colorScheme;
+setColorScheme(colorScheme);
+
+colorSchemeSelector.addEventListener("change", e => {
+  console.log("switched");
   colorScheme = e.target.value;
-  switch (e.target.value) {
+  localStorage.colorScheme = e.target.value;
+  setColorScheme(e.target.value);
+});
+
+function setColorScheme(colorScheme) {
+  switch (colorScheme) {
     case "red-green":
       document.body.classList.remove("red-blue", "monochrome");
       document.body.classList.add("red-green");
@@ -29,7 +43,7 @@ colorSchemeSelector.addEventListener("input", e => {
       document.body.classList.add("monochrome");
       break;
   }
-});
+}
 
 document.getElementById("trash-one").addEventListener("click", () => {
   suttaOneContent.innerHTML = "";
