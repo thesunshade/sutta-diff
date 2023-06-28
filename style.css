@@ -37,6 +37,7 @@ body {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    word-wrap: break-word;
 }
 
 
@@ -150,6 +151,7 @@ h1 {
 
 .sc-link {
     text-align: center;
+    padding-top: 10px;
 }
 
 #comparidon-content {
@@ -276,6 +278,8 @@ button.trash {
 
 .byline {
     text-align: center;
+    padding-top: 10px;
+    font-style: italic;
 }
 
 .footer {

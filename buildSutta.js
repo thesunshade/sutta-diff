@@ -26,13 +26,9 @@ export function buildSutta(slug, suttaArea, language) {
     }
   }
 
-  const contentResponse = fetch(
-    `https://suttacentral.net/api/bilarasuttas/${slug}/${translator}?lang=${root ? "en" : language}`
-  ).then(response => response.json());
+  const contentResponse = fetch(`https://suttacentral.net/api/bilarasuttas/${slug}/${translator}?lang=${root ? "en" : language}`).then(response => response.json());
 
-  const suttaplex = fetch(
-    `https://suttacentral.net/api/suttas/${slug}/${translator}?lang=${root ? "en" : language}&siteLanguage=en`
-  ).then(response => response.json());
+  const suttaplex = fetch(`https://suttacentral.net/api/suttas/${slug}/${translator}?lang=${root ? "en" : language}&siteLanguage=en`).then(response => response.json());
 
   Promise.all([contentResponse, suttaplex])
     .then(responses => {
@@ -49,10 +45,9 @@ export function buildSutta(slug, suttaArea, language) {
         html += `${openHtml}${root ? root_text[segment] : translation_text[segment]}${closeHtml}<br>\n`;
       });
 
-      const scLink = `<p class="sc-link"><a href="https://suttacentral.net/${slug}"><img height="20px" src="./images/favicon-sc.png"></img></a></p>`;
+      const scLink = `<p class="sc-link"><a href="https://suttacentral.net/${slug}/en/sujato" title="Open on SuttaCentral.net"><img height="20px" src="./images/favicon-sc.png"></img></a></p>`;
 
-      const translatorByline =
-        language === "en" ? `<div class="byline"><p>Translated by ${suttaplex.translation.author}</p></div>` : "";
+      const translatorByline = language === "en" ? `<div class="byline"><p>Translated by ${suttaplex.translation.author}</p></div>` : "";
 
       suttaArea.innerHTML = html + "<hr>" + translatorByline + scLink;
 
@@ -81,9 +76,7 @@ export function buildSutta(slug, suttaArea, language) {
       //     : "";
     })
     .catch(error => {
-      suttaArea.innerHTML = `<p>Sorry, "${decodeURIComponent(
-        slug
-      )}" is not a valid sutta citation <i>or</i> it is not available in the selected language.
+      suttaArea.innerHTML = `<p>Sorry, "${decodeURIComponent(slug)}" is not a valid sutta citation <i>or</i> it is not available in the selected language.
       <br><br>
       Note: <br>
       Suttas that are part of a series require that you enter the exact series. For example, <code>an1.1</code> will not work, but <code>an1.1-10</code> will.<br>
