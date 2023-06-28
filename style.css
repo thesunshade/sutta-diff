@@ -26,20 +26,19 @@ body {
     /* background: white; */
     background: var(--off-black);
     font: 1rem sans-serif;
-    color: var(--off-white)
+    color: var(--off-white);
+    height: 100%;
 }
 
 body {
-    padding-top: 1em;
+    padding: 1em;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
-html,
-body {
-    height: 100%
-}
 
 .instructions-heading {
     text-align: center;
@@ -95,7 +94,7 @@ h1 {
 
 .monochrome .sutta-two {
     background-color: var(--dark-gray);
-    color: var(--off-white);
+    color: white;
     font-weight: bold;
 }
 
@@ -133,7 +132,7 @@ h1 {
 
 .monochrome ins {
     background-color: var(--dark-gray);
-    color: var(--off-white);
+    color: white;
     font-weight: bold;
     text-decoration: none;
 }
@@ -252,6 +251,11 @@ select {
     padding-left: .3rem;
 }
 
+button.trash {
+    border: none;
+    background-color: transparent;
+}
+
 .compare-button {
     border-radius: 0;
     border: 1px solid var(--dark-gray);
@@ -274,6 +278,12 @@ select {
     text-align: center;
 }
 
+.footer {
+    margin-top: auto;
+    border-top: solid 1px;
+
+}
+
 /* --------- OTHER TOOLS ICONS --------*/
 .links-area {
     display: flex;
@@ -281,6 +291,7 @@ select {
     gap: 1rem;
     justify-content: center;
     margin-top: 2rem;
+    padding-bottom: 1rem;
 }
 
 .icon {

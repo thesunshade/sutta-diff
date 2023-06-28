@@ -26,20 +26,21 @@
 </head>
 
 <body class="red-green">
+    <div class="main">
     <div class="instructions-heading">Choose two suttas to compare</div>
     <div class="options">
         <div id="settings">
 
-            <label><input type="radio" name="diff_type" value="diffWords" checked> By Word</label>
-            <label><input type="radio" name="diff_type" value="diffLines"> By Line</label>
+            <label><input type="radio" name="diff_type" value="diffWords" checked tabindex="1"> By Word</label>
+            <label><input type="radio" name="diff_type" value="diffLines" tabindex="2"> By Line</label>
         </div>
-        <select name="language" id="language">
+        <select name="language" id="language" tabindex="3">
             <option value="en">English</option>
             <option value="pl">Pāli</option>
             <!-- <option value="de">German</option>
             <option value="fr">French</option> -->
         </select>
-        <select name="color-scheme" id="color-scheme">
+        <select name="color-scheme" id="color-scheme" tabindex="4">
             <option value="red-green">Red/Green</option>
             <option value="red-blue">Red/Blue</option>
             <option value="monochrome">B/W</option>
@@ -49,21 +50,27 @@
     <div id="comparison-area">
         <div id="sutta-one" class="sutta-area sutta-one">
             <form id="sutta-one-form"><input class="input-area" id="sutta-one-citation" type="text"
-                    placeholder="Enter citation"><input class="go-button" type="submit" value="Load"><img id="trash-one"
-                    height="19px" class="icon-trash" src="./images/icon-trash.png"></form>
+                    placeholder="Enter citation" tabindex="5"><input class="go-button" type="submit" value="Load"
+                    tabindex="6"><button class="trash" tabindex="7" id="trash-one"><img height="19px" class="icon-trash"
+                        src="./images/icon-trash.png"></button>
+            </form>
             <div id="sutta-one-content" class="content-area"></div>
         </div>
         <div id="sutta-two" class="sutta-area sutta-two">
             <form id="sutta-two-form"><input class="input-area" id="sutta-two-citation" type="text"
-                    placeholder="Enter citation"><input class="go-button" type="submit" value="Load"><img id="trash-two"
-                    height="19px" class="icon-trash" src="./images/icon-trash.png"></form>
+                    placeholder="Enter citation" tabindex="8"><input class="go-button" type="submit" value="Load"
+                    tabindex="9"><button class="trash" tabindex="10"><img id="trash-two" height="19px"
+                        class="icon-trash" src="./images/icon-trash.png"></button>
+            </form>
             <div id="sutta-two-content" class="content-area"></div>
         </div>
         <div id="comparison" class="sutta-area comparison">
-            <button id="compare-button" class="compare-button">Compare</button>
+            <button id="compare-button" class="compare-button" tabindex="11">Compare</button>
             <div id="comparidon-content" class="content-area"></div>
         </div>
     </div>
+</div>
+<div class="footer"></div>
     <div class="links-area" style="text-align: center;">
         <!--RF MAIN-->
         <a href="http://readingfaithfully.org" title="Support for your sutta readng practice" rel="noreferrer"
@@ -104,6 +111,7 @@
             rel="noreferrer" target="_blank"><img class="icon" width="20px" src="./images/GitHub-Mark-64px-black.png"
                 alt="GitHub icon"></a>
     </div>
+</div>
     <script src="diff.js"></script>
     <script type="module" src="index.js"></script>
 </body>

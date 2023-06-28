@@ -45,13 +45,14 @@ function setColorScheme(colorScheme) {
   }
 }
 
-document.getElementById("trash-one").addEventListener("click", () => {
+document.getElementById("trash-one").addEventListener("click", e => {
+  e.preventDefault();
   suttaOneContent.innerHTML = "";
   params.delete("one");
-  //   document.location.search = params;
   window.history.replaceState(null, null, "?" + params);
 });
-document.getElementById("trash-two").addEventListener("click", () => {
+document.getElementById("trash-two").addEventListener("click", e => {
+  e.preventDefault();
   suttaTwoContent.innerHTML = "";
   params.delete("two");
   //   document.location.search = params;
