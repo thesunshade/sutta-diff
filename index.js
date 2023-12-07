@@ -1,18 +1,19 @@
-import { buildSutta } from "./buildSutta.js";
-// import { JsDiff } from "./diff.js";
+import { activateTrashability } from "./functions/activateTrashability.js";
+import { buildSutta } from "./functions/buildSutta.js";
+import { changed } from "./functions/changed.js";
+import { setColorScheme } from "./setColorScheme.js";
 
 const form1 = document.getElementById("sutta-one-form");
 const suttaOneCitation = document.getElementById("sutta-one-citation");
-const suttaOneContent = document.getElementById("sutta-one-content");
+export const suttaOneContent = document.getElementById("sutta-one-content");
 
 const form2 = document.getElementById("sutta-two-form");
 const suttaTwoCitation = document.getElementById("sutta-two-citation");
-const suttaTwoContent = document.getElementById("sutta-two-content");
+export const suttaTwoContent = document.getElementById("sutta-two-content");
 
-let params = new URLSearchParams(document.location.search);
-
+export let params = new URLSearchParams(document.location.search);
 const colorSchemeSelector = document.getElementById("color-scheme");
-console.log(colorSchemeSelector.value);
+
 let colorScheme = "red-green";
 if (localStorage.colorScheme) {
   console.log("there is local storage");
@@ -28,36 +29,7 @@ colorSchemeSelector.addEventListener("change", e => {
   setColorScheme(e.target.value);
 });
 
-function setColorScheme(colorScheme) {
-  switch (colorScheme) {
-    case "red-green":
-      document.body.classList.remove("red-blue", "monochrome");
-      document.body.classList.add("red-green");
-      break;
-    case "red-blue":
-      document.body.classList.remove("red-green", "monochrome");
-      document.body.classList.add("red-blue");
-      break;
-    case "monochrome":
-      document.body.classList.remove("red-blue", "red-green");
-      document.body.classList.add("monochrome");
-      break;
-  }
-}
-
-document.getElementById("trash-one").addEventListener("click", e => {
-  e.preventDefault();
-  suttaOneContent.innerHTML = "";
-  params.delete("one");
-  window.history.replaceState(null, null, "?" + params);
-});
-document.getElementById("trash-two").addEventListener("click", e => {
-  e.preventDefault();
-  suttaTwoContent.innerHTML = "";
-  params.delete("two");
-  //   document.location.search = params;
-  window.history.replaceState(null, null, "?" + params);
-});
+activateTrashability();
 
 const compareButton = document.getElementById("compare-button");
 const languageSelector = document.getElementById("language");
@@ -115,40 +87,13 @@ form2.addEventListener("submit", e => {
 });
 
 /* -------ORIGINAL------------*/
-const a = suttaOneContent;
-const b = suttaTwoContent;
-const result = document.getElementById("comparidon-content");
+export const a = suttaOneContent;
+export const b = suttaTwoContent;
+export const result = document.getElementById("comparidon-content");
 
 compareButton.addEventListener("click", () => {
   changed();
 });
-
-function changed() {
-  var diff = JsDiff[window.diffType](a.textContent, b.textContent);
-  var fragment = document.createDocumentFragment();
-  for (var i = 0; i < diff.length; i++) {
-    if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
-      var swap = diff[i];
-      diff[i] = diff[i + 1];
-      diff[i + 1] = swap;
-    }
-
-    var node;
-    if (diff[i].removed) {
-      node = document.createElement("del");
-      node.appendChild(document.createTextNode(diff[i].value));
-    } else if (diff[i].added) {
-      node = document.createElement("ins");
-      node.appendChild(document.createTextNode(diff[i].value));
-    } else {
-      node = document.createTextNode(diff[i].value);
-    }
-    fragment.appendChild(node);
-  }
-
-  result.textContent = "";
-  result.appendChild(fragment);
-}
 
 window.onload = function () {
   onDiffTypeChange(document.querySelector('#settings [name="diff_type"]:checked'));
