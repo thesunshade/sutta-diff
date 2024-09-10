@@ -221,6 +221,7 @@ select {
     background-color: var(--off-white);
     color: var(--dark-gray);
     padding: .1rem;
+    max-width: 5rem;
 }
 
 .dark .input-area {
